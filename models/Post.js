@@ -10,22 +10,22 @@ Post.init(
             allowNull: false,
             primaryKey: true,
             autoIncrement: true
-          },
-          title: {
+        },
+        title: {
             type: DataTypes.STRING,
             allowNull: false
-          },
-          content: {
+        },
+        content: {
             type: DataTypes.TEXT,
             allowNull: false
-          },
-          user_id: {
+        },
+        user_id: {
             type: DataTypes.INTEGER,
             references: {
               model: 'user',
               key: 'id'
             }
-          }
+        }
     },
     {
         sequelize,
