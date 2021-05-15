@@ -1,4 +1,4 @@
-const { Post } = reqire('../models');
+const { Post } = require('../models');
 
 const postData = [
     {
