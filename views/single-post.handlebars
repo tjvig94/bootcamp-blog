@@ -9,5 +9,19 @@
                     {{comment.user.name}}: {{comment.comment_text}}
                 </div>
             {{/each}}
-        </div>
+            <form id="newcomment">
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Name</span>
+                    <input type="text" name="name" aria-label="name" class="form-control">
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Comment</span>
+                    <textarea type="text" name="comment" aria-label="comment" class="form-control"></textarea>
+                </div>
+                <button type="submit" class="btn btn-outline-secondary">Submit</button>
+            </form>
+    </div>  
 </div>
+
+<script src="../js/new-comment.js"></script>
