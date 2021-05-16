@@ -1,0 +1,8 @@
+<div class="container">
+    <h3>{{title}}</h3><br>
+    <p>{{content}}</p><br>
+    <p>By {{user.name}}</p>
+    <h2>Comments:</h2>
+    {{#each comment as |comment|}}
+        <p>{{comment_text}}</p>
+</div>

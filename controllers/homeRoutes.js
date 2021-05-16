@@ -14,7 +14,7 @@ router.get('/signup', (req, res) => {
     res.render('sign-up');
 });
 
-router.get('/', async (req, res) => {
+router.get('/', async (req, res) => {   
     try {
         const postData = await Post.findAll({
             attributes: ['id', 'title', 'content', 'created_at'],
@@ -22,29 +22,28 @@ router.get('/', async (req, res) => {
                 {
                     model: Comment,
                     attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-                    include: {
+                    include: [{
                         model: User,
                         attributes: ['name'],
-                    },
+                    }]
                 },
                 {
                     model: User,
                     attributes: ['name']
-
                 }
             ]
-        }).then(postDB => {
-            const posts = postDB.map(post => post.get({ plain: true }));
-            res.render('homepage', { posts, loggedIn: req.session.loggedIn });
         })
+        const posts = postData.map(post => post.get({ plain: true }));
+        res.render('homepage', { posts });
     } catch (error) {
         res.status(500).json(error)
+        console.log(error);
     }
 });
 
 router.get('/post/:id', async (req, res) => {
     try {
-        const postId = await Post.findOne({
+        const postData = await Post.findOne({
             where: {
                 id: req.params.id
             },
@@ -65,15 +64,14 @@ router.get('/post/:id', async (req, res) => {
 
                 },
             ]
-        }).then(postData => {
+        });
             if (!postData) {
                 res.status(404).json({ message: 'no post found matching with this id' });
                 return;
             }
             const post = postData.get({ plain: true });
             console.log(post);
-            res.render('single-post', { post, loggedIn: req.session.loggedIn });
-        })
+            res.render('single-post', post);        
     } catch (err) {
         res.status(500).json(err)
     };
