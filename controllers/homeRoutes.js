@@ -70,7 +70,7 @@ router.get('/post/:id', async (req, res) => {
                 return;
             }
             const post = postData.get({ plain: true });
-            console.log(post);
+            console.log(post.comments);
             res.render('single-post', post);        
     } catch (err) {
         res.status(500).json(err)

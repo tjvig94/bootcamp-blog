@@ -2,7 +2,12 @@
     <h3>{{title}}</h3><br>
     <p>{{content}}</p><br>
     <p>By {{user.name}}</p>
-    <h2>Comments:</h2>
-    {{#each comment as |comment|}}
-        <p>{{comment_text}}</p>
+    <div class="container">
+        <h4>Comments</h4>
+            {{#each comments as |comment|}}
+                <div class="container">
+                    {{comment.user.name}}: {{comment.comment_text}}
+                </div>
+            {{/each}}
+        </div>
 </div>
