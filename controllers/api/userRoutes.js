@@ -5,10 +5,11 @@ router.get('/', async (req, res) => {
     try {
         const userData = await User.findAll({
             attributes: { exclude: ['password'] }
-        }).then(userData => res.json(userData))
-
+        })
+        res.json(userData)
     } catch (err) {
         res.status(500).json(err)
+        console.log(err);
     };
 });
 
@@ -18,8 +19,7 @@ router.post('/', async (req, res) => {
     
         req.session.save(() => {
             req.session.user_id = userData.id;
-            req.session.logged_in = true;
-    
+            req.session.logged_in = true;    
             res.status(200).json(userData);
         });
     } catch (err) {

@@ -74,4 +74,13 @@ router.get('/post/:id', async (req, res) => {
     };
 });
 
+router.get('/register', async (req, res) => {
+    try {
+        res.render('register');
+    } catch (error) {
+        res.status(500).json(error);
+        console.log(error);
+    }
+})
+
 module.exports = router;
