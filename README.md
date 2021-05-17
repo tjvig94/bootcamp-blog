@@ -1,6 +1,6 @@
 # Bootcamp Blog [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-[Deployed Application](https://tjvig94.github.io/bootcamp-blog)
+[Deployed Application](https://desolate-hollows-93236.herokuapp.com/)
 
 
 
